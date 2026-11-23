@@ -1,0 +1,40 @@
+name: Unpack SURYA Recorder Source
+
+on:
+  push:
+    paths:
+      - "SURYA_RECORDER_SOURCE.zip"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract project ZIP
+        run: |
+          python3 - <<'PY'
+          import zipfile
+          from pathlib import Path
+
+          archive = Path("SURYA_RECORDER_SOURCE.zip")
+          with zipfile.ZipFile(archive) as z:
+              for item in z.infolist():
+                  p = Path(item.filename)
+                  if p.is_absolute() or ".." in p.parts:
+                      raise SystemExit("Unsafe ZIP path detected")
+              z.extractall(".")
+          PY
+
+      - name: Commit project files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add SURYA Recorder source project" || exit 0
+          git push
