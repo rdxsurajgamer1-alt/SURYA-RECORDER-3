@@ -1,0 +1,21 @@
+SURYA RECORDER - GitHub upload package
+
+IMPORTANT:
+This is an Android starter project, not a finished or signed release APK.
+The GitHub Actions workflow in .github/workflows/build-apk.yml builds a DEBUG APK.
+The APK is a prototype: 30 FPS and microphone audio only. Internal/game audio and
+60 FPS are not implemented. 4K selection may fail if the phone's capture/encoder
+does not support it.
+
+UPLOAD:
+1. Extract this ZIP on your phone using Files / My Files.
+2. In your GitHub repository, use Add file -> Upload files.
+3. Upload the extracted contents, preserving the .github/workflows folder and
+   the SURYA_RECORDER folder. Do not upload only this ZIP archive.
+4. Commit the upload. Open Actions to check the build.
+5. When the workflow succeeds, open the run and download the
+   SURYA-RECORDER-debug-apk artifact.
+
+If GitHub mobile does not let you select folders or hidden .github files,
+use GitHub's web desktop-site mode or a ZIP-capable Git client. Uploading the ZIP
+as one file alone will NOT install its workflow or build the APK.

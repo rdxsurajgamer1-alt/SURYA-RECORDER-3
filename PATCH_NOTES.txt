@@ -1,0 +1,22 @@
+SURYA RECORDER - PATCHED SOURCE
+
+What this patch changes:
+- Requests Android microphone runtime permission when Microphone mode is selected.
+- Continues with video-only capture if microphone permission is denied.
+- Starts MediaProjection foreground service with the explicit mediaProjection service type.
+- Keeps No Audio mode as a valid video-only MP4 configuration.
+- Adds detailed Logcat errors and safer recorder cleanup.
+- Internal Audio and Internal + Microphone are NOT implemented in this patch. The app will tell you this; a separate AudioPlaybackCapture implementation is still required.
+
+How to use:
+1. Back up your original project.
+2. Extract this ZIP.
+3. Open the extracted project folder in Android Studio.
+4. Let Gradle sync complete.
+5. Build > Clean Project, then Build > Make Project.
+6. Install the new APK and test No Audio first, then Microphone.
+7. If it still fails, send the full Logcat error beginning with SURYA_RECORDER.
+
+Important:
+- This is a source-code patch, not a verified APK. It has not been compiled or tested on a Galaxy A17 in this environment.
+- Do not upload only the three changed files into GitHub randomly. Replace the matching paths in your project, or use this full patched project as the project folder.
